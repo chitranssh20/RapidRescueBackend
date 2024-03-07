@@ -1,0 +1,20 @@
+{
+  "name": "rapid-rescue-backend",
+  "version": "1.0.0",
+  "description": "Backend for Rapid Rescue App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chitranssh Saxena",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.3",
+    "neo4j-driver": "^5.18.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
