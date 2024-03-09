@@ -1,4 +1,5 @@
 const driver = require('../driver')
+
 const session = driver.session();
 
 const getAllNodes = async () => {
