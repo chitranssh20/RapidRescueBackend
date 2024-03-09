@@ -21,9 +21,9 @@ require('dotenv').config();
 app.use(express.json());
 
 app.get('/' , async(req, res) => {
-   const data = await getAllNodes();
-   addNewDevice();
-
+  //  const data = await getAllNodes();
+   await addNewDevice();
+  const data = "data"
     return res.status(200).json({message: "success", data: data })
 } )
 
