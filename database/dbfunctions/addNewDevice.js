@@ -1,5 +1,6 @@
 const driver = require('../driver')
 const geolib = require('geolib')
+const deviceSchema = require('../Schema')
 const { DEFAULT_LATTITUDE, DEFAULT_LONGITUDE } = require('../../constant');
 
 
@@ -15,7 +16,10 @@ const addMocdataPoints = async (lattitude, longitude) => {
     let mockDataPoints = ``;
     for(let i = 0; i < 8; i++ ){
         const mockPoint = createMockDataPoint(lattitude, longitude)
-        mockDataPoints += `, (n${i} : Normal  {lattitude: ${mockPoint.latitude} , longitude: ${mockPoint.longitude} , fcm: "N/A" })`
+        const newPoint = new deviceSchema({lattitude : mockPoint.latitude, longitude : mockPoint.longitude})
+        // console.log("New Point is : ", typeof newPoint.fcm)
+        mockDataPoints += `, (n${i} : Normal  {lattitude: ${newPoint.lattitude} , longitude: ${newPoint.longitude} , fcm: "${newPoint.fcm}" })`
+        // console.log("Mock Data Points :  ", mockDataPoints  )
     }
     return mockDataPoints;
 }
