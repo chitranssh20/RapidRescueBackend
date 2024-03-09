@@ -17,16 +17,13 @@ const addMocdataPoints = async (lattitude, longitude) => {
     for(let i = 0; i < 8; i++ ){
         const mockPoint = createMockDataPoint(lattitude, longitude)
         const newPoint = new deviceSchema({lattitude : mockPoint.latitude, longitude : mockPoint.longitude})
-        // console.log("New Point is : ", typeof newPoint.fcm)
         mockDataPoints += `, (n${i} : Normal  {lattitude: ${newPoint.lattitude} , longitude: ${newPoint.longitude} , fcm: "${newPoint.fcm}" })`
-        // console.log("Mock Data Points :  ", mockDataPoints  )
     }
     return mockDataPoints;
 }
 
 const addNewDevice = async (lattitude = DEFAULT_LATTITUDE, longitude = DEFAULT_LONGITUDE ) => {
     const session = driver.session();
-
     try{
         const mockDataPoints =  await addMocdataPoints(lattitude, longitude);
         const result = await session.run(`CREATE (n: NotAlert  {lattitude : ${lattitude} , longitude: ${longitude} }) ${mockDataPoints} `);
