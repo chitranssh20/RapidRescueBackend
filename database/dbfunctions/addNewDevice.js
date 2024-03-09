@@ -1,5 +1,6 @@
 const driver = require('../driver')
 const geolib = require('geolib')
+const deviceSchema = require('../Schema')
 const { DEFAULT_LATTITUDE, DEFAULT_LONGITUDE } = require('../../constant');
 
 
@@ -8,6 +9,9 @@ const createMockDataPoint = (lattitude, longitude) => {
     const bearing = Math.random()*360;
     const distance = Math.random()*1000;
     const mockDataPoint = geolib.computeDestinationPoint({latitude : lattitude , longitude : longitude } , distance, bearing)
+    const newPoint = new deviceSchema({lattitude: mockDataPoint.latitude, longitude: mockDataPoint.longitude})
+    console.log("New point is : ", newPoint);
+    console.log("mock point : " , mockDataPoint )
     return mockDataPoint;
 }
 
